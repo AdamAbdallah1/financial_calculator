@@ -14,7 +14,7 @@ def calc_salary():
     # Calculating the amount for savings, rent, electricity and storing them in a dictionary
     finance_data = {
         "salary": salary,
-        "month": month,
+        "month": month.lower(),
         "savings": (savings_per / 100) * salary,
         "rent": (rent_per / 100) * salary,
         "electricity": (electricity_per / 100) * salary
@@ -56,8 +56,18 @@ def calc_salary():
 
 username = input("Enter your username: ")
 password = input("Enter your password: ")
+calc = False
+
 if username == adminuser and password == adminpass:
     print("Welcome Back!")
-    calc_salary()
+    while True:
+        calc = input("Do you want to calculate salary? (y/n): ")
+        if calc == "y":
+            calc_salary()
+        elif calc == "n":
+            break
+        else:
+            print("Invalid input!")
+            continue
 else:
     print("Access Denied!")
