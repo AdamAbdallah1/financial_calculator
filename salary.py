@@ -19,3 +19,7 @@ reminder = salary - total_exp
 # Estimate yearly rent and electricity costs
 yearly_rent = rent * 12
 yearly_electricity = electricity * 12
+
+# Calculating salary raised by 2 
+salary_squar = salary ** 2
+
