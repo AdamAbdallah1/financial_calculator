@@ -1,4 +1,4 @@
-from random import random
+import random
 
 adminuser = "Admin"
 adminpass = "Admin123"
@@ -30,7 +30,7 @@ def calc_salary():
     salary_squar = salary ** 2
 
     # Assum Nabiha saves an additional random amount each month
-    additional_savings = 50
+    additional_savings = random.randint(0, 100)
     if savings != 0:
         saving_div = additional_savings / savings
     else:
@@ -48,7 +48,7 @@ def calc_salary():
             [*] Estimated yearly rent: ${yearly_rent}
             [*] Estimated yearly electricity: ${yearly_electricity}
             [*] Salary raised to power of 2: ${salary_squar}
-            [*] Additional savings amount divided by savings: {saving_div}
+            [*] Additional savings amount {additional_savings} divided by savings: {saving_div}
         """)
 
 username = input("Enter your username: ")
