@@ -28,10 +28,10 @@ def calc_salary():
     salary_squar = salary ** 2
 
     # Assume Nabiha saves an additional random amount each month
-    additional_savings = input("Enter any additional savings amount: ")
+    additional_savings = float(input("Enter any additional savings amount: "))
     if savings != 0:
         saving_div = additional_savings / savings
-    else:
+    else:  
         0
 
     # Printing the results in a readable format
