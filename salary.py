@@ -1,5 +1,6 @@
 adminuser = "Admin"
 adminpass = "Admin123"
+finance_data = {}
 
 def calc_salary():
     # Asking for salary and moth
@@ -54,20 +55,23 @@ def calc_salary():
             [*] Additional savings amount {finance_data['additional_savings']} divided by savings: {finance_data['saving_div']}
         """)
 
-username = input("Enter your username: ")
-password = input("Enter your password: ")
-calc = False
 
-if username == adminuser and password == adminpass:
-    print("Welcome Back!")
-    while True:
-        calc = input("Do you want to calculate salary? (y/n): ")
-        if calc == "y":
-            calc_salary()
-        elif calc == "n":
-            break
+def admin_login():
+    username = input("Enter your username: ")
+    password = input("Enter your password: ")
+
+    if username == adminuser and password == adminpass:
+        print("Welcome Back!")
+        while True:
+            calc = input("Do you want to calculate salary? (y/n): ")
+            if calc == "y":
+                calc_salary()
+            elif calc == "n":
+                admin_login()
+            else:
+                print("Invalid input!")
+                continue
         else:
-            print("Invalid input!")
-            continue
-else:
-    print("Access Denied!")
+            print("Access Denied!")
+            
+admin_login()
