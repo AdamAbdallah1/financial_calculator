@@ -15,3 +15,7 @@ electricity = (electricity_per / 100) * salary
 # Calculating the total expenses and reminder
 total_exp = savings + rent + electricity
 reminder = salary - total_exp
+
+# Estimate yearly rent and electricity costs
+yearly_rent = rent * 12
+yearly_electricity = electricity * 12
