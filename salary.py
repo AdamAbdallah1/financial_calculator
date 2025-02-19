@@ -19,6 +19,8 @@ def calc_salary():
         rent_per: (rent_per / 100) * salary,
         electricity_per: (electricity_per / 100) * salary
     }
+    finance_data["total_expenses"] = finance_data["savings"] + finance_data["rent"] + finance_data["electricity"]
+
 
     # Calculating the total expenses and reminder
     total_exp = savings + rent + electricity
