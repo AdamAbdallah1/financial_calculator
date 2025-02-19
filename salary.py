@@ -15,9 +15,9 @@ def calc_salary():
     finance_data = {
         "salary": salary,
         "month": month,
-        "savings_per": (savings_per / 100) * salary,
-        "rent_per": (rent_per / 100) * salary,
-        "electricity_per": (electricity_per / 100) * salary
+        "savings": (savings_per / 100) * salary,
+        "rent": (rent_per / 100) * salary,
+        "electricity": (electricity_per / 100) * salary
     }
     
     # Calculating the total expenses and reminder and storing them in the dictionary
@@ -29,28 +29,29 @@ def calc_salary():
     finance_data["yearly_electricity"] = finance_data["electricity"] * 12
     
     # Calculating salary raised by 2 
-    salary_squar = salary ** 2
+    finance_data["salary_squar"] = finance_data["salary"] ** 2
 
     # Assume Nabiha saves an additional random amount each month
     additional_savings = float(input("Enter any additional savings amount: "))
-    if savings != 0:
-        saving_div = additional_savings / savings
+    finance_data["additional_savings"] = additional_savings
+    if finance_data["savings"] != 0:
+        finance_data["saving_div"] = additional_savings / finance_data["savings"]
     else:  
         0
 
     # Printing the results in a readable format
     print(f"""
-        [+] Financial information for {month}
-            [*] Salary: ${salary}
-            [*] Amount of Savings: ${savings}
-            [*] Amount of Rents: ${rent}
-            [*] Amount of Electricity: ${electricity}
-            [*] Total Expenses of savings + rent + electricity: ${total_exp}
-            [*] Remaining amount after expenses: ${reminder}
-            [*] Estimated yearly rent: ${yearly_rent}
-            [*] Estimated yearly electricity: ${yearly_electricity}
-            [*] Salary raised to power of 2: ${salary_squar}
-            [*] Additional savings amount {additional_savings} divided by savings: {saving_div}
+        [+] Financial information for {finance_data["month"]}
+            [*] Salary: ${finance_data["salary"]}
+            [*] Amount of Savings: ${finance_data["savings"]}
+            [*] Amount of Rents: ${finance_data["rent"]}
+            [*] Amount of Electricity: ${finance_data["electricity"]}
+            [*] Total Expenses of savings + rent + electricity: ${finance_data["total_expenses"]}
+            [*] Remaining amount after expenses: ${finance_data["reminder"]}
+            [*] Estimated yearly rent: ${finance_data["yearly_rent"]}
+            [*] Estimated yearly electricity: ${finance_data["yearly_electricity"]}
+            [*] Salary raised to power of 2: ${finance_data["salary_squar"]}
+            [*] Additional savings amount {finance_data['additional_savings']} divided by savings: {finance_data['saving_div']}
         """)
 
 username = input("Enter your username: ")
