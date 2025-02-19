@@ -11,10 +11,14 @@ def calc_salary():
     rent_per = float(input("Enter the percentage of rent: "))
     electricity_per = float(input("Enter the Percentage of electricity: "))
 
-    # Calculating the amount for savings, rent, electricity
-    savings = (savings_per / 100) * salary
-    rent = (rent_per / 100) * salary
-    electricity = (electricity_per / 100) * salary
+    # Calculating the amount for savings, rent, electricity and storing them in a dictionary
+    finance_data = {
+        "salary": salary,
+        "month": month,
+        savings_per: (savings_per / 100) * salary,
+        rent_per: (rent_per / 100) * salary,
+        electricity_per: (electricity_per / 100) * salary
+    }
 
     # Calculating the total expenses and reminder
     total_exp = savings + rent + electricity
