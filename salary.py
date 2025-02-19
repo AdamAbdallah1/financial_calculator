@@ -1,3 +1,5 @@
+from random import random
+
 # Asking for salary and moth
 salary = float(input("Enter your salary: "))
 month = input("Enter the name of the month: ")
@@ -23,3 +25,10 @@ yearly_electricity = electricity * 12
 # Calculating salary raised by 2 
 salary_squar = salary ** 2
 
+# Assum Nabiha saves an additional random amount each month
+additional_savings = 50
+if savings != 0:
+    saving_div = additional_savings / savings
+else:
+    0
+    
