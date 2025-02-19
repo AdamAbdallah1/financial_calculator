@@ -31,4 +31,18 @@ if savings != 0:
     saving_div = additional_savings / savings
 else:
     0
-    
+
+# Printing the results in a readable format
+print(f"""
+      [+] Financial information for {month}
+        [*] Salary: ${salary}
+        [*] Amount of Savings: ${savings}
+        [*] Amount of Rents: ${rent}
+        [*] Amount of Electricity: ${electricity}
+        [*] Total Expenses of savings + rent + electricity: ${total_exp}
+        [*] Remaining amount after expenses: ${reminder}
+        [*] Estimated yearly rent: ${yearly_rent}
+        [*] Estimated yearly electricity: ${yearly_electricity}
+        [*] Salary raised to power of 2: ${salary_squar}
+        [*] Additional savings amount divided by savings: {saving_div}
+      """)
