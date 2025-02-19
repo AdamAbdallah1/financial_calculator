@@ -67,15 +67,18 @@ def admin_login():
     if username == adminuser and password == adminpass:
         print("Welcome Back!")
         while True:
-            calc = input("Do you want to calculate salary? (y/n): ")
-            if calc == "y":
-                calc_salary()
-            elif calc == "n":
-                admin_login()
-            else:
-                print("Invalid input!")
-                continue
-        else:
-            print("Access Denied!")
+            action = input("Do you want to calculate salary? (calc/exit): ").lower()
             
+            if action == "calc":
+                calc_salary()
+            elif action == "exit":
+                print("Goodbye!")
+                break
+            else:
+                print("Invalid input! Try again.")
+    else:
+        print("Access Denied!")
+        
+
+        
 admin_login()
