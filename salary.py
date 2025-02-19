@@ -20,14 +20,14 @@ def calc_salary():
         "electricity_per": (electricity_per / 100) * salary
     }
     
-    # Calculating the total expenses and reminder
+    # Calculating the total expenses and reminder and storing them in the dictionary
     finance_data["total_expenses"] = finance_data["savings"] + finance_data["rent"] + finance_data["electricity"]
     finance_data["reminder"] = finance_data["salary"] - finance_data["total_expenses"]
 
     # Estimate yearly rent and electricity costs
-    yearly_rent = rent * 12
-    yearly_electricity = electricity * 12
-
+    finance_data["yearly_rent"] = finance_data["rent"] * 12
+    finance_data["yearly_electricity"] = finance_data["electricity"] * 12
+    
     # Calculating salary raised by 2 
     salary_squar = salary ** 2
 
