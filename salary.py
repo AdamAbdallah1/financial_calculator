@@ -3,61 +3,65 @@ adminpass = "Admin123"
 finance_data = {}
 
 def calc_salary():
-    # Initialize finance_data as a global variable
-    global finance_data 
-    # Asking for salary and moth
+    global finance_data  
     salary = float(input("Enter your salary: "))
     month = input("Enter the name of the month: ").lower()
 
-    # Asking for percentages of salary allocated to savings rent and electricity
     savings_per = float(input("Enter the percentage of savings: "))
     rent_per = float(input("Enter the percentage of rent: "))
     electricity_per = float(input("Enter the Percentage of electricity: "))
 
-    # Calculating the amount for savings, rent, electricity and storing them in a dictionary
     finance_data[month] = {
         "salary": salary,
-        "month": month.lower(),
         "savings": (savings_per / 100) * salary,
         "rent": (rent_per / 100) * salary,
         "electricity": (electricity_per / 100) * salary
     }
-    
-    # Calculating the total expenses and reminder and storing them in the dictionary
+
     finance_data[month]["total_expenses"] = (
         finance_data[month]["savings"] + finance_data[month]["rent"] + finance_data[month]["electricity"]
     )
     finance_data[month]["reminder"] = finance_data[month]["salary"] - finance_data[month]["total_expenses"]
-
-    # Estimate yearly rent and electricity costs
     finance_data[month]["yearly_rent"] = finance_data[month]["rent"] * 12
     finance_data[month]["yearly_electricity"] = finance_data[month]["electricity"] * 12
-    
-    # Calculating salary raised by 2 
     finance_data[month]["salary_squar"] = finance_data[month]["salary"] ** 2
 
-    # Assume Nabiha saves an additional random amount each month
     additional_savings = float(input("Enter any additional savings amount: "))
     finance_data[month]["additional_savings"] = additional_savings
     if finance_data[month]["savings"] != 0:
         finance_data[month]["saving_div"] = additional_savings / finance_data[month]["savings"]
     else:  
-        0
+        finance_data[month]["saving_div"] = 0  # Properly set to 0
 
-    # Printing the results in a readable format
+    print_finance_data(month)  # Call a function to display the data
+
+
+def print_finance_data(month):
+    """Prints financial data for a given month."""
     print(f"""
-        [+] Financial information for {finance_data[month]["month"]}
-            [*] Salary: ${finance_data[month]["salary"]}
-            [*] Amount of Savings: ${finance_data[month]["savings"]}
-            [*] Amount of Rents: ${finance_data[month]["rent"]}
-            [*] Amount of Electricity: ${finance_data[month]["electricity"]}
-            [*] Total Expenses of savings + rent + electricity: ${finance_data[month]["total_expenses"]}
-            [*] Remaining amount after expenses: ${finance_data[month]["reminder"]}
-            [*] Estimated yearly rent: ${finance_data[month]["yearly_rent"]}
-            [*] Estimated yearly electricity: ${finance_data[month]["yearly_electricity"]}
-            [*] Salary raised to power of 2: ${finance_data[month]["salary_squar"]}
-            [*] Additional savings amount {finance_data[month]['additional_savings']} divided by savings: {finance_data[month]['saving_div']}
-        """)
+    [+] Financial Information for {month.capitalize()}
+        [*] Salary: ${finance_data[month]["salary"]}
+        [*] Amount of Savings: ${finance_data[month]["savings"]}
+        [*] Amount of Rent: ${finance_data[month]["rent"]}
+        [*] Amount of Electricity: ${finance_data[month]["electricity"]}
+        [*] Total Expenses (savings + rent + electricity): ${finance_data[month]["total_expenses"]}
+        [*] Remaining Balance: ${finance_data[month]["reminder"]}
+        [*] Estimated Yearly Rent: ${finance_data[month]["yearly_rent"]}
+        [*] Estimated Yearly Electricity: ${finance_data[month]["yearly_electricity"]}
+        [*] Salary Squared: ${finance_data[month]["salary_squar"]}
+        [*] Additional Savings: ${finance_data[month]["additional_savings"]}
+        [*] Additional Savings ÷ Savings: {finance_data[month]["saving_div"]}
+    """)
+
+
+def view_s():
+    """Displays stored salary data for all months."""
+    if not finance_data:
+        print("No salary data available.")
+        return
+
+    for month in finance_data:
+        print_finance_data(month)
 
 
 def admin_login():
@@ -70,14 +74,16 @@ def admin_login():
             print("""
                   Do you want to:
                     (C)alculate salary
-                    (V)iew salarys
+                    (V)iew salaries
                     (E)xit
                   """)
             action = input(">_: ").lower()
             
-            if action == "calc":
+            if action == "c":
                 calc_salary()
-            elif action == "exit":
+            elif action == "v":
+                view_s()
+            elif action == "e":
                 print("Goodbye!")
                 break
             else:
@@ -86,5 +92,4 @@ def admin_login():
         print("Access Denied!")
         
 
-        
 admin_login()
