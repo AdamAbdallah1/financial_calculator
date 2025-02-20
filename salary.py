@@ -67,7 +67,13 @@ def admin_login():
     if username == adminuser and password == adminpass:
         print("Welcome Back!")
         while True:
-            action = input("Do you want to calculate salary? (calc/exit): ").lower()
+            print("""
+                  Do you want to:
+                    (C)alculate salary
+                    (V)iew salarys
+                    (E)xit
+                  """)
+            action = input(">_: ").lower()
             
             if action == "calc":
                 calc_salary()
